@@ -70,94 +70,8 @@ LEARNING_SECTIONS = [
     "PYQ Questions",
 ]
 
-# ------------------------------------------
-# STUDY MATERIAL DATABASE
-# Add more chapters here: STUDY_CONTENT["Chapter Name"] = {section: markdown}
-# ------------------------------------------
-STUDY_CONTENT = {
-    "Kinematics": {
-        "Theory": (
-            "Kinematics describes motion without considering its cause.\n\n"
-            "- **Displacement** is a vector (change in position); **distance** is a scalar.\n"
-            "- **Velocity** = rate of change of displacement; **acceleration** = rate of change of velocity.\n"
-            "- For constant acceleration, the three equations of motion apply.\n"
-            "- The slope of an x-t graph gives velocity; the slope of a v-t graph gives acceleration; "
-            "the area under a v-t graph gives displacement.\n"
-            "- In projectile motion, horizontal and vertical motions are independent."
-        ),
-        "Important Formulas": (
-            "- $v = u + at$\n"
-            "- $s = ut + \\tfrac{1}{2}at^2$\n"
-            "- $v^2 = u^2 + 2as$\n"
-            "- Projectile range: $R = \\dfrac{u^2 \\sin 2\\theta}{g}$\n"
-            "- Max height: $H = \\dfrac{u^2 \\sin^2\\theta}{2g}$\n"
-            "- Time of flight: $T = \\dfrac{2u\\sin\\theta}{g}$"
-        ),
-        "Solved Examples": (
-            "**Example.** A car starts from rest and accelerates at $2\\ \\text{m/s}^2$ for $5$ s. "
-            "Find its final velocity and distance covered.\n\n"
-            "- $v = u + at = 0 + 2(5) = 10$ m/s\n"
-            "- $s = ut + \\tfrac12 at^2 = 0 + \\tfrac12(2)(25) = 25$ m"
-        ),
-        "Practice Problems": (
-            "1. A body is thrown vertically upward at 20 m/s. Find the maximum height ($g = 10\\ \\text{m/s}^2$).\n"
-            "2. Find the range of a projectile launched at 30 m/s at 45° ($g = 10\\ \\text{m/s}^2$).\n"
-            "3. A train slows from 30 m/s to 10 m/s in 10 s. Find the acceleration and distance covered."
-        ),
-        "PYQ Questions": "Add verified previous-year questions for this chapter to STUDY_CONTENT.",
-    },
-    "Laws of Motion": {
-        "Theory": (
-            "- **Newton's First Law:** a body stays at rest or in uniform motion unless acted on by a net force.\n"
-            "- **Newton's Second Law:** net force equals rate of change of momentum.\n"
-            "- **Newton's Third Law:** every action has an equal and opposite reaction.\n"
-            "- **Friction:** static friction adjusts up to a maximum $\\mu_s N$; kinetic friction is $\\mu_k N$.\n"
-            "- Always draw a free-body diagram before writing equations."
-        ),
-        "Important Formulas": (
-            "- $\\vec F = m\\vec a$\n"
-            "- $\\vec p = m\\vec v$, $\\ \\vec F = \\dfrac{d\\vec p}{dt}$\n"
-            "- $f_s \\le \\mu_s N$, $\\ f_k = \\mu_k N$\n"
-            "- Block on incline (smooth): $a = g\\sin\\theta$"
-        ),
-        "Solved Examples": (
-            "**Example.** A 5 kg block is pulled by a 20 N horizontal force on a surface with "
-            "kinetic friction of 5 N. Find the acceleration.\n\n"
-            "Net force $= 20 - 5 = 15$ N, so $a = F/m = 15/5 = 3\\ \\text{m/s}^2$."
-        ),
-        "Practice Problems": (
-            "1. A 2 kg block rests on a rough surface with $\\mu_s = 0.5$. Find the minimum horizontal force to move it ($g = 10$).\n"
-            "2. Find the acceleration of a block sliding down a smooth $30^\\circ$ incline.\n"
-            "3. Two masses 3 kg and 2 kg are connected over a smooth pulley. Find the acceleration."
-        ),
-        "PYQ Questions": "Add verified previous-year questions for this chapter to STUDY_CONTENT.",
-    },
-    "Complex Numbers": {
-        "Theory": (
-            "A complex number is $z = a + ib$ with $i^2 = -1$.\n\n"
-            "- Modulus: $|z| = \\sqrt{a^2 + b^2}$\n"
-            "- Conjugate: $\\bar z = a - ib$, and $z\\bar z = |z|^2$\n"
-            "- Polar form: $z = r(\\cos\\theta + i\\sin\\theta) = re^{i\\theta}$\n"
-            "- The $n$th roots of unity are equally spaced on the unit circle."
-        ),
-        "Important Formulas": (
-            "- $|z_1 z_2| = |z_1||z_2|$\n"
-            "- $|z_1 + z_2| \\le |z_1| + |z_2|$ (triangle inequality)\n"
-            "- De Moivre: $(\\cos\\theta + i\\sin\\theta)^n = \\cos n\\theta + i\\sin n\\theta$\n"
-            "- Cube roots of unity: $1 + \\omega + \\omega^2 = 0$, $\\ \\omega^3 = 1$"
-        ),
-        "Solved Examples": (
-            "**Example 1.** Find $|3 + 4i|$.\n\n$\\sqrt{3^2 + 4^2} = 5$.\n\n"
-            "**Example 2.** Simplify $(1 + i)^2$.\n\n$1 + 2i + i^2 = 2i$."
-        ),
-        "Practice Problems": (
-            "1. Find the modulus and argument of $1 + i\\sqrt3$.\n"
-            "2. Evaluate $\\left(\\dfrac{1+i}{1-i}\\right)^{8}$.\n"
-            "3. If $\\omega$ is a cube root of unity, find $(1+\\omega)^3$."
-        ),
-        "PYQ Questions": "Add verified previous-year questions for this chapter to STUDY_CONTENT.",
-    },
-}
+# Study material lives in study_content.py (keep it in the same folder)
+from study_content import STUDY_CONTENT
 
 # ------------------------------------------
 # PRACTICE QUESTION BANK
@@ -294,7 +208,7 @@ elif page == "Study Material":
     sel = st.session_state.study_selection
     if sel and sel["subject"] == subject and sel["chapter"] == chapter:
         st.success(f"Loaded: {chapter} ({sel['level']})")
-        content = STUDY_CONTENT.get(chapter)
+        content = STUDY_CONTENT.get((subject, chapter))
         if content is None:
             st.info(
                 f"Content for **{chapter}** is not added yet. "
