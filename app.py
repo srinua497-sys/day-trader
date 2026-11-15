@@ -6,38 +6,6 @@ from datetime import datetime
 # Existing pages preserved; Study Material Submit added.
 # ==========================================
 
-    st.write("### Learning Sections")
-
-    theory = st.checkbox("Theory", key="study_theory")
-    formulas = st.checkbox("Important Formulas", key="study_formulas")
-    examples = st.checkbox("Solved Examples", key="study_examples")
-    practice = st.checkbox("Practice Problems", key="study_practice")
-    pyq = st.checkbox("PYQ Questions", key="study_pyq")
-
-    if st.button("SUBMIT / LOAD CHAPTER", type="primary", use_container_width=True):
-        selected_sections = []
-
-        if theory:
-            selected_sections.append("Theory")
-        if formulas:
-            selected_sections.append("Important Formulas")
-        if examples:
-            selected_sections.append("Solved Examples")
-        if practice:
-            selected_sections.append("Practice Problems")
-        if pyq:
-            selected_sections.append("PYQ Questions")
-
-        if selected_sections:
-            st.success(f"Selected: {chapter}")
-            st.write("Selected Learning Sections:")
-            for section in selected_sections:
-                st.write(f"✅ {section}")
-
-            st.info("Study material database integration is still required to load the actual chapter content.")
-        else:
-            st.warning("Please select at least one learning section.")
-
 st.set_page_config(
     page_title="JEE AI PRO",
     page_icon="🎓",
