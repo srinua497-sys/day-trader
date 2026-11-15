@@ -67,7 +67,7 @@ LEARNING_SECTIONS = [
     "Important Formulas",
     "Solved Examples",
     "Practice Problems",
-    "PYQ Questions",
+    "Most Important Questions",
 ]
 
 # ------------------------------------------
@@ -87,7 +87,7 @@ def _build(theory, formulas, example, practice, answers, focus):
         "Important Formulas": _bul(formulas),
         "Solved Examples": example,
         "Practice Problems": _num(practice) + "\n\n**Answers:** " + answers,
-        "PYQ Questions": (
+        "Most Important Questions": (
             "**Frequently tested in JEE Main / Advanced:**\n\n" + _bul(focus) +
             "\n\nFor exact past-paper questions, use the official papers at "
             "jeemain.nta.nic.in and jeeadv.ac.in and add verified questions here."
@@ -1056,6 +1056,312 @@ STUDY_CONTENT[("Mathematics", "Probability")] = _build(
 )
 
 # ------------------------------------------
+# MOST IMPORTANT QUESTIONS (JEE pattern) with solutions
+# ------------------------------------------
+IMPORTANT = {
+    ("Physics", "Units and Dimensions"): [
+        ("Planck's constant h has the same dimensions as: (a) energy (b) angular momentum (c) power (d) momentum",
+         "**(b).** h = E/ν = [ML²T⁻²]/[T⁻¹] = [ML²T⁻¹], the same as angular momentum mvr."),
+        ("The time period T of oscillation of a liquid drop depends on density ρ, radius r and surface tension S. Find T ∝ ρᵃ rᵇ Sᶜ.",
+         "S = [MT⁻²]. Matching M: a + c = 0; L: −3a + b = 0; T: −2c = 1. So c = −1/2, a = 1/2, b = 3/2, giving **T ∝ √(ρr³/S)**."),
+        ("P = a³b² / (c√d). Percentage errors in a, b, c, d are 1%, 2%, 3%, 4%. Find the maximum percentage error in P.",
+         "3(1) + 2(2) + 3 + ½(4) = **12%**."),
+    ],
+    ("Physics", "Kinematics"): [
+        ("A particle moves as x = t³ − 6t² + 9t (SI). Find the distance travelled in the first 3 s.",
+         "v = 3(t − 1)(t − 3), so it turns at t = 1. x(0) = 0, x(1) = 4, x(3) = 0. Distance = 4 + 4 = **8 m**."),
+        ("Two projectiles are launched with the same speed at angles θ and (90° − θ). Find the ratio of their ranges.",
+         "R ∝ sin 2θ and sin 2(90° − θ) = sin 2θ, so the ratio is **1 : 1**."),
+        ("A boat moves at 5 m/s relative to water, heading straight across a 100 m wide river flowing at 3 m/s. Find the crossing time and the drift.",
+         "t = 100/5 = **20 s**; drift = 3 × 20 = **60 m**."),
+    ],
+    ("Physics", "Laws of Motion"): [
+        ("A 10 kg block on a rough surface (μ = 0.4) is pulled by a horizontal 50 N force. Find a (g = 10).",
+         "Friction = 0.4 × 100 = 40 N, so a = (50 − 40)/10 = **1 m/s²**."),
+        ("A 60 kg man stands in a lift accelerating upward at 2 m/s². Find his apparent weight (g = 10).",
+         "N = m(g + a) = 60 × 12 = **720 N**."),
+        ("Blocks of 4 kg and 6 kg touch on a smooth floor. A 20 N force pushes the 4 kg block. Find the contact force.",
+         "a = 20/10 = 2 m/s². The contact force accelerates the 6 kg block: 6 × 2 = **12 N**."),
+    ],
+    ("Physics", "Work Energy Power"): [
+        ("A 1 kg ball moving at 4 m/s collides head-on and elastically with a 1 kg ball at rest. Find their velocities after impact.",
+         "Equal masses exchange velocities: the first stops and the second moves at **4 m/s**."),
+        ("A ball dropped from 10 m rebounds to 2.5 m. Find the coefficient of restitution.",
+         "e = √(h₂/h₁) = √0.25 = **0.5**."),
+        ("A pump lifts 100 kg of water per minute from a 10 m deep well. Find the power (g = 10).",
+         "P = mgh/t = (100 × 10 × 10)/60 ≈ **167 W**."),
+    ],
+    ("Physics", "Rotational Motion"): [
+        ("A solid sphere rolls without slipping. What fraction of its total kinetic energy is rotational?",
+         "I/MR² = 2/5. Rotational/Total = (2/5)/(1 + 2/5) = **2/7**."),
+        ("A uniform rod of length L, hinged at one end, is released from the horizontal. Find the angular acceleration at release.",
+         "τ = MgL/2, I = ML²/3, so α = τ/I = **3g/2L**."),
+        ("A disc rotating at ω has a second identical disc, at rest, dropped coaxially onto it. Find the final angular speed.",
+         "Angular momentum conserved: Iω = 2Iω′, so **ω′ = ω/2** (half the kinetic energy is lost)."),
+    ],
+    ("Physics", "Gravitation"): [
+        ("Find the total energy of a satellite of mass m in a circular orbit of radius r around a planet of mass M.",
+         "**−GMm/2r**: kinetic = +GMm/2r, potential = −GMm/r."),
+        ("A planet has 4 times Earth's mass and the same radius. Compare its escape velocity with Earth's (11.2 km/s).",
+         "v ∝ √M, so v = 2 × 11.2 = **22.4 km/s**."),
+        ("At what fraction of the surface value is g at a depth d = R/2 inside the Earth?",
+         "g′ = g(1 − d/R) = **g/2**."),
+    ],
+    ("Physics", "Thermodynamics"): [
+        ("An ideal gas expands to twice its volume, once isothermally and once adiabatically, from the same initial state. Which final pressure is lower?",
+         "**Adiabatic.** The gas cools while expanding, so its final pressure is lower than in the isothermal case."),
+        ("What fraction of heat supplied at constant pressure to a monoatomic ideal gas is converted into work?",
+         "W/Q = R/Cp = R/(5R/2) = **2/5**."),
+        ("A Carnot engine has efficiency 40%. Lowering the sink temperature by 50 K raises it to 50%. Find the source temperature.",
+         "T₂ = 0.6T₁ and T₂ − 50 = 0.5T₁, so 0.1T₁ = 50, giving **T₁ = 500 K** (T₂ = 300 K)."),
+    ],
+    ("Physics", "Electrostatics"): [
+        ("What is the electric field and the potential inside a uniformly charged thin spherical shell?",
+         "Field = **0**; potential is constant and equal to the surface value kQ/R."),
+        ("A 5 µF capacitor is charged to 100 V and isolated. A dielectric of K = 2 fills the gap. Find the new energy.",
+         "Initial U = ½(5×10⁻⁶)(100)² = 0.025 J. Q is constant and C doubles, so U halves: **0.0125 J**."),
+        ("Charges +q and −q are 2a apart. Find the field at the midpoint.",
+         "Both fields point toward −q: E = 2kq/a²."),
+    ],
+    ("Physics", "Current Electricity"): [
+        ("A wire of resistance R is stretched to twice its length. Find the new resistance.",
+         "Volume is fixed, so area halves: R′ = ρ(2l)/(A/2) = **4R**."),
+        ("In a balanced Wheatstone bridge P = 10 Ω, Q = 20 Ω, R = 30 Ω. Find S.",
+         "P/Q = R/S gives S = 30 × 20/10 = **60 Ω**."),
+        ("A cell of EMF 2 V and internal resistance 0.5 Ω supplies a variable external resistance. Find the maximum power delivered.",
+         "Maximum when R = r: P = E²/4r = 4/2 = **2 W**."),
+    ],
+    ("Physics", "Magnetism"): [
+        ("A proton moves perpendicular to a uniform B field in a circle of radius r. If its speed doubles, what happens to the radius and the time period?",
+         "r = mv/qB doubles; T = 2πm/qB is **unchanged**."),
+        ("Two long parallel wires 1 m apart each carry 1 A in the same direction. Find the force per metre.",
+         "F/l = μ₀I₁I₂/2πd = **2 × 10⁻⁷ N/m**, attractive."),
+        ("A 0.5 m rod moves at 4 m/s perpendicular to a 0.2 T field, perpendicular to its length. Find the EMF induced.",
+         "EMF = Blv = 0.2 × 0.5 × 4 = **0.4 V**."),
+    ],
+    ("Physics", "Optics"): [
+        ("A glass slab of thickness 6 cm and refractive index 1.5 is placed over a printed page. By how much does the page appear to rise?",
+         "Shift = t(1 − 1/n) = 6(1 − 2/3) = **2 cm**."),
+        ("A prism with A = 60° and n = √2. Find the angle of minimum deviation.",
+         "sin((A + δ)/2) = n sin(A/2) = √2 × 0.5, so (60° + δ)/2 = 45° and **δ = 30°**."),
+        ("In Young's experiment with equal slit intensities, central maximum intensity is I₀. Find the intensity where the path difference is λ/3.",
+         "φ = 2π/3, I = I₀cos²(φ/2) = I₀cos²60° = **I₀/4**."),
+    ],
+    ("Physics", "Modern Physics"): [
+        ("Light of wavelength 400 nm falls on a metal with work function 2 eV. Find the stopping potential.",
+         "E = 1240/400 = 3.1 eV, K_max = 3.1 − 2 = 1.1 eV, so **V₀ = 1.1 V**."),
+        ("The activity of a sample falls to 1/16 of its initial value in 2 hours. Find the half-life.",
+         "1/16 = (1/2)⁴, so 4 half-lives = 120 min and **t½ = 30 min**."),
+        ("How much energy excites a hydrogen atom from the ground state to n = 2?",
+         "13.6(1 − 1/4) = **10.2 eV**."),
+    ],
+    ("Chemistry", "Some Basic Concepts"): [
+        ("What mass of CaCO₃ must be heated to get 11.2 L of CO₂ at STP?",
+         "11.2 L = 0.5 mol CO₂, so 0.5 mol CaCO₃ = **50 g**."),
+        ("Find the molality of an 18% (w/w) glucose solution (M = 180).",
+         "18 g glucose = 0.1 mol in 82 g solvent: 0.1/0.082 ≈ **1.22 m**."),
+        ("2 mol H₂ reacts with 1.5 mol O₂ to form water. Find the limiting reagent and the mass of water.",
+         "2H₂ + O₂ → 2H₂O. 2 mol H₂ needs only 1 mol O₂, so **H₂ is limiting**; water = 2 mol = **36 g**."),
+    ],
+    ("Chemistry", "Atomic Structure"): [
+        ("Find the de Broglie wavelength of an electron in the n = 2 orbit of hydrogen (r₁ = 0.529 Å).",
+         "2πr = nλ gives λ = πr₂ = π(4 × 0.529) ≈ **6.65 Å**."),
+        ("Which set is NOT allowed? (a) n=3, l=2, m=−2 (b) n=2, l=2, m=0 (c) n=3, l=0, m=0 (d) n=4, l=3, m=3",
+         "**(b).** l must be less than n."),
+        ("How many unpaired electrons does Mn²⁺ (Z = 25) have?",
+         "Mn²⁺ is [Ar]3d⁵, so **5**."),
+    ],
+    ("Chemistry", "Chemical Bonding"): [
+        ("Which species has bond order 2.5: O₂, O₂⁺, O₂⁻, N₂?",
+         "**O₂⁺**: removing one π* electron from O₂ (bond order 2) gives 2.5."),
+        ("Why is O₂ paramagnetic?",
+         "In MO theory its two highest-energy electrons occupy separate π* orbitals with parallel spins, so it has **2 unpaired electrons**."),
+        ("Give the hybridisation and shape of XeF₄.",
+         "**sp³d², square planar** (4 bond pairs and 2 lone pairs)."),
+    ],
+    ("Chemistry", "Thermodynamics"): [
+        ("1 mol of ice melts at 273 K with ΔH_fus = 6.0 kJ/mol. Find ΔS.",
+         "ΔS = 6000/273 ≈ **22 J/K·mol**."),
+        ("Find the reversible isothermal work for 1 mol of ideal gas expanding from 1 L to 10 L at 300 K.",
+         "w = −2.303RT log(10) = −2.303 × 8.314 × 300 ≈ **−5744 J**."),
+        ("A system absorbs 50 J of heat and does 20 J of work. Find ΔU.",
+         "ΔU = q + w = 50 − 20 = **30 J**."),
+    ],
+    ("Chemistry", "Equilibrium"): [
+        ("Find the pH of 0.1 M CH₃COOH (Ka = 1.8 × 10⁻⁵).",
+         "[H⁺] = √(KaC) = √(1.8 × 10⁻⁶) ≈ 1.34 × 10⁻³, so **pH ≈ 2.87**."),
+        ("Find the solubility of AgCl if Ksp = 1 × 10⁻¹⁰.",
+         "s = √Ksp = **10⁻⁵ M**."),
+        ("In N₂O₄ ⇌ 2NO₂, which way does equilibrium shift when pressure is increased?",
+         "Toward fewer gas moles: **left** (towards N₂O₄)."),
+    ],
+    ("Chemistry", "Electrochemistry"): [
+        ("How much charge is needed to deposit 1 mol of Al from Al³⁺?",
+         "3F = 3 × 96500 = **289,500 C**."),
+        ("Find E for Zn | Zn²⁺(0.01 M) || Cu²⁺(1 M) | Cu at 298 K (E° = 1.10 V).",
+         "E = 1.10 − (0.0591/2) log(0.01/1) = 1.10 + 0.0591 ≈ **1.16 V**."),
+        ("Why does the molar conductivity of a weak electrolyte rise sharply on dilution?",
+         "The degree of dissociation increases, giving more ions."),
+    ],
+    ("Chemistry", "Chemical Kinetics"): [
+        ("A first-order reaction is 75% complete in 32 min. Find t½.",
+         "75% completion = 2 half-lives, so **t½ = 16 min**."),
+        ("State the unit of k for a second-order reaction.",
+         "**L mol⁻¹ s⁻¹**."),
+        ("A first-order reaction has k = 0.0693 min⁻¹ and [A]₀ = 0.8 M. Find [A] after 30 min.",
+         "t½ = 10 min, so 3 half-lives: 0.8/8 = **0.1 M**."),
+    ],
+    ("Chemistry", "Organic Chemistry"): [
+        ("Which is more stable: CH₂=CH–CH₂⁺ or CH₃CH₂CH₂⁺?",
+         "**Allyl cation**, because of resonance delocalisation."),
+        ("Why is phenol more acidic than ethanol?",
+         "The phenoxide ion is stabilised by resonance, while the ethoxide ion is not."),
+        ("How many stereoisomers can a molecule with 2 different chiral centres have?",
+         "2ⁿ = 2² = **4**."),
+    ],
+    ("Chemistry", "Hydrocarbons"): [
+        ("Ozonolysis (followed by Zn/H₂O) of 2-methylpropene gives which products?",
+         "**Acetone and formaldehyde.**"),
+        ("How can 1-butyne be distinguished from 2-butyne?",
+         "Ammoniacal AgNO₃: only the terminal alkyne (1-butyne) gives a **white precipitate**."),
+        ("What are the main products of nitration of toluene?",
+         "**Ortho and para nitrotoluene**: –CH₃ is an activating, ortho/para-directing group."),
+    ],
+    ("Chemistry", "Aldehydes and Ketones"): [
+        ("Acetaldehyde is treated with dilute NaOH and then heated. Name the product.",
+         "Aldol condensation gives **crotonaldehyde (but-2-enal)**."),
+        ("Which does NOT give the iodoform test: ethanol, acetone, 2-propanol, 1-propanol?",
+         "**1-Propanol**: it lacks CH₃CO– and CH₃CH(OH)– groups."),
+        ("Name two reactions that reduce benzaldehyde to toluene.",
+         "**Clemmensen** (Zn-Hg/HCl) and **Wolff-Kishner** (NH₂NH₂/KOH)."),
+    ],
+    ("Chemistry", "Coordination Compounds"): [
+        ("How many geometrical isomers does [Co(NH₃)₄Cl₂]⁺ have?",
+         "**2**: cis and trans."),
+        ("Give the hybridisation, shape and magnetism of [Ni(CO)₄].",
+         "Ni(0) with strong-field CO: **sp³, tetrahedral, diamagnetic**."),
+        ("Give the IUPAC name of [Co(NH₃)₅Cl]Cl₂.",
+         "**Pentaamminechloridocobalt(III) chloride.**"),
+    ],
+    ("Mathematics", "Sets and Relations"): [
+        ("In a class of 100 students, 60 like tea, 50 like coffee and 20 like both. How many like neither?",
+         "100 − (60 + 50 − 20) = **10**."),
+        ("Is R = {(1,1), (2,2), (3,3), (1,2), (2,1)} on {1, 2, 3} an equivalence relation?",
+         "It is reflexive, symmetric and transitive, so **yes**."),
+        ("How many one-one functions are there from a 3-element set to a 5-element set?",
+         "⁵P₃ = **60**."),
+    ],
+    ("Mathematics", "Complex Numbers"): [
+        ("If |z − 1| = |z + 1|, find the locus of z.",
+         "z is equidistant from 1 and −1, so it lies on the **imaginary axis** (Re z = 0)."),
+        ("Evaluate (1 + i)¹⁰.",
+         "(1 + i)² = 2i, so (2i)⁵ = 32i⁵ = **32i**."),
+        ("If ω is a cube root of unity, find ω¹⁰⁰ + ω²⁰⁰ + ω³⁰⁰.",
+         "ω¹⁰⁰ = ω, ω²⁰⁰ = ω², ω³⁰⁰ = 1, so the sum = 1 + ω + ω² = **0**."),
+    ],
+    ("Mathematics", "Quadratic Equations"): [
+        ("If α and β are the roots of x² − 5x + 6 = 0, find α² + β².",
+         "(α + β)² − 2αβ = 25 − 12 = **13**."),
+        ("Find the number of real roots of x² − 3|x| + 2 = 0.",
+         "|x| = 1 or 2, so x = ±1, ±2: **4 roots**."),
+        ("Find m such that x² + mx + 4 > 0 for all real x.",
+         "D < 0: m² − 16 < 0, so **−4 < m < 4**."),
+    ],
+    ("Mathematics", "Sequences and Series"): [
+        ("Find the sum 1·2 + 2·3 + ... + n(n + 1).",
+         "**n(n + 1)(n + 2)/3**."),
+        ("Three numbers in AP have sum 15 and product 105. Find them.",
+         "Let them be 5 − d, 5, 5 + d: 5(25 − d²) = 105, so d = ±2. The numbers are **3, 5, 7**."),
+        ("The AM of two positive numbers is 5 and the GM is 4. Find them.",
+         "a + b = 10 and ab = 16, so the numbers are **2 and 8**."),
+    ],
+    ("Mathematics", "Straight Lines"): [
+        ("Find the line through (2, 3) perpendicular to 3x + 4y = 7.",
+         "The slope is 4/3: y − 3 = (4/3)(x − 2), so **4x − 3y + 1 = 0**."),
+        ("Find the area of the triangle with vertices (0, 0), (4, 0), (0, 3).",
+         "½ × 4 × 3 = **6**."),
+        ("Find the reflection of (1, 2) in the line y = x.",
+         "**(2, 1)**."),
+    ],
+    ("Mathematics", "Circle"): [
+        ("Find the length of the tangent from (5, 0) to x² + y² = 9.",
+         "√(25 − 9) = **4**."),
+        ("Find the circle through (0, 0), (4, 0), (0, 6).",
+         "x² + y² + 2gx + 2fy = 0 with g = −2, f = −3: **x² + y² − 4x − 6y = 0**."),
+        ("How do the circles x² + y² = 1 and (x − 3)² + y² = 4 touch?",
+         "Distance between centres = 3 = 1 + 2, so they touch **externally**."),
+    ],
+    ("Mathematics", "Conic Sections"): [
+        ("Find the length of the latus rectum of x²/25 + y²/16 = 1.",
+         "2b²/a = 2(16)/5 = **32/5**."),
+        ("For y² = 16x, find the focal distance of the point (4, 8).",
+         "Focus (4, 0), a = 4, so the focal distance = x + a = **8**."),
+        ("What is the eccentricity of a rectangular hyperbola?",
+         "a = b gives e = √(1 + 1) = **√2**."),
+    ],
+    ("Mathematics", "Limits"): [
+        ("Evaluate lim (x → 0) sin 3x / sin 5x.",
+         "**3/5**."),
+        ("Evaluate lim (x → 0) (1 + 3x)^(1/x).",
+         "**e³**."),
+        ("Evaluate lim (x → ∞) (x² + 1)/(2x² − 3).",
+         "Divide by x²: **1/2**."),
+    ],
+    ("Mathematics", "Continuity"): [
+        ("Where is f(x) = [x] (greatest integer function) discontinuous?",
+         "At **every integer**."),
+        ("Is f(x) = x sin(1/x) for x ≠ 0, f(0) = 0 continuous at 0?",
+         "|x sin(1/x)| ≤ |x| → 0, so **yes** (sandwich theorem)."),
+        ("How many points of non-differentiability does f(x) = |x| + |x − 1| have?",
+         "**2** (at x = 0 and x = 1)."),
+    ],
+    ("Mathematics", "Differentiation"): [
+        ("Differentiate xˣ.",
+         "Take logs: **xˣ(1 + ln x)**."),
+        ("Find dy/dx at (3, 4) for x² + y² = 25.",
+         "dy/dx = −x/y = **−3/4**."),
+        ("Find the maximum value of x e⁻ˣ.",
+         "f′ = e⁻ˣ(1 − x) = 0 gives x = 1, so the maximum is **1/e**."),
+    ],
+    ("Mathematics", "Integration"): [
+        ("Evaluate ∫₀^π x sin x dx.",
+         "[−x cos x + sin x] from 0 to π = **π**."),
+        ("Evaluate ∫₀¹ dx/(1 + x²).",
+         "tan⁻¹(1) − tan⁻¹(0) = **π/4**."),
+        ("Find the area bounded by y = x² and y = x.",
+         "∫₀¹ (x − x²) dx = 1/2 − 1/3 = **1/6**."),
+    ],
+    ("Mathematics", "Matrices and Determinants"): [
+        ("If A = [[1, 2], [0, 1]], find Aⁿ.",
+         "**[[1, 2n], [0, 1]]**."),
+        ("For a 3 × 3 matrix with |A| = 5, find |adj A|.",
+         "|A|² = **25**."),
+        ("Is the system x + y = 2, 2x + 2y = 5 consistent?",
+         "No: the second equation contradicts twice the first, so it is **inconsistent** (no solution)."),
+    ],
+    ("Mathematics", "Probability"): [
+        ("A bag has 3 red and 2 blue balls. Two are drawn without replacement. Find P(both red).",
+         "(3/5)(2/4) = **3/10**."),
+        ("Box A has 2 red and 3 blue balls; box B has 4 red and 1 blue. A box is chosen at random and a red ball is drawn. Find P(box B).",
+         "P(R|A) = 2/5, P(R|B) = 4/5. P(B|R) = (0.5 × 0.8)/(0.5 × 0.4 + 0.5 × 0.8) = **2/3**."),
+        ("A binomial variable has n = 10, p = 0.3. Find the mean and variance.",
+         "Mean = np = **3**; variance = npq = **2.1**."),
+    ],
+}
+
+for _key, _qs in IMPORTANT.items():
+    _text = "\n\n".join(
+        f"**Q{i}.** {q}\n\n{a}" for i, (q, a) in enumerate(_qs, 1)
+    )
+    _topics = STUDY_CONTENT[_key]["Most Important Questions"].split(
+        "\n\nFor exact past-paper")[0]
+    STUDY_CONTENT[_key]["Most Important Questions"] = (
+        _text + "\n\n---\n\n" + _topics +
+        "\n\n*These are JEE-pattern important questions written for practice. "
+        "For official past papers visit jeemain.nta.nic.in and jeeadv.ac.in.*"
+    )
+
+# ------------------------------------------
 # PRACTICE QUESTION BANK
 # Key: (subject, chapter) -> list of {q, options, answer, explanation, difficulty}
 # ------------------------------------------
@@ -1160,9 +1466,55 @@ if page == "Dashboard":
 elif page == "Study Material":
     st.subheader("📚 Chapter Wise Learning")
 
-    subject = st.selectbox("Select Subject", list(SUBJECTS.keys()))
-    chapter = st.selectbox("Select Chapter", SUBJECTS[subject])
-    level = st.radio("Learning Level", ["Basic", "JEE Mains", "JEE Advanced"], horizontal=True)
+    ALL_CHAPTERS = [(s, c) for s, cs in SUBJECTS.items() for c in cs]
+
+    # Initialise / repair navigation state (before widgets are created)
+    if "sm_subject" not in st.session_state:
+        st.session_state.sm_subject = list(SUBJECTS.keys())[0]
+    if st.session_state.get("sm_chapter") not in SUBJECTS[st.session_state.sm_subject]:
+        st.session_state.sm_chapter = SUBJECTS[st.session_state.sm_subject][0]
+    if "sm_level" not in st.session_state:
+        st.session_state.sm_level = "Basic"
+
+    def go_chapter(step):
+        idx = ALL_CHAPTERS.index(
+            (st.session_state.sm_subject, st.session_state.sm_chapter)
+        ) + step
+        if 0 <= idx < len(ALL_CHAPTERS):
+            s, c = ALL_CHAPTERS[idx]
+            st.session_state.sm_subject = s
+            st.session_state.sm_chapter = c
+            st.session_state.study_selection = {
+                "subject": s,
+                "chapter": c,
+                "level": st.session_state.sm_level,
+                "sections": list(LEARNING_SECTIONS),
+            }
+            for sec in LEARNING_SECTIONS:
+                st.session_state[f"study_{s}_{c}_{sec}"] = True
+
+    def nav_bar(prefix):
+        pos = ALL_CHAPTERS.index(
+            (st.session_state.sm_subject, st.session_state.sm_chapter)
+        )
+        c1, c2, c3 = st.columns([1, 2, 1])
+        c1.button("⬅ Previous Chapter", key=f"{prefix}_prev",
+                  on_click=go_chapter, args=(-1,), disabled=(pos == 0))
+        c2.markdown(
+            f"<div style='text-align:center;padding-top:8px'>"
+            f"Chapter {pos + 1} of {len(ALL_CHAPTERS)}</div>",
+            unsafe_allow_html=True,
+        )
+        c3.button("Next Chapter ➡", key=f"{prefix}_next",
+                  on_click=go_chapter, args=(1,),
+                  disabled=(pos == len(ALL_CHAPTERS) - 1))
+
+    subject = st.selectbox("Select Subject", list(SUBJECTS.keys()), key="sm_subject")
+    chapter = st.selectbox("Select Chapter", SUBJECTS[subject], key="sm_chapter")
+    level = st.radio("Learning Level", ["Basic", "JEE Mains", "JEE Advanced"],
+                     horizontal=True, key="sm_level")
+
+    nav_bar("top")
 
     st.markdown("---")
     st.subheader(chapter)
@@ -1196,12 +1548,13 @@ elif page == "Study Material":
                 f"Content for **{chapter}** is not added yet. "
                 "Add it to STUDY_CONTENT in app.py to display it here."
             )
-            for s in sel["sections"]:
-                st.write(f"✅ {s}")
         else:
             for s in sel["sections"]:
                 with st.expander(f"📖 {s}", expanded=True):
                     st.markdown(content.get(s, "Content not available."))
+
+    st.markdown("---")
+    nav_bar("bottom")
 
 # ==========================================
 # AI TEACHER
